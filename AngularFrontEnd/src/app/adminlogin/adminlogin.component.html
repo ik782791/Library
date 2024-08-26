@@ -1,0 +1,78 @@
+<div class="register-form">
+<div style="margin-top:100px;"></div>
+<div style="text-align:center;">
+    <h2> Administrator Login</h2>
+</div>
+
+<div class="container mt-5 p-1">
+  <form name="adminform" #admform="ngForm" (ngSubmit)="admform.form.valid" novalidate>
+
+    <div class="form-group">
+      <div class="row mt-2 text-center">
+        <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+              <input type="text" class="form-control-plaintext form-control border-bottom"
+              id="user_email" name="user_email"
+              placeholder="Email Id" [(ngModel)]="adminform.user_email"
+              #user_email="ngModel"
+              [ngClass]="{'is-invalid':admform.submitted && user_email.errors}"/>
+
+              <div *ngIf="admform.submitted && user_email.errors" class="invalid-feedback">
+                <div *ngIf="user_email.errors['required']"> Email ID is required </div>
+            </div>
+          </div>
+      </div>
+      </div>
+
+      <div class="form-group">
+      <div class="row mt-2">
+        <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+              <input type="text"
+              class="form-control-plaintext form-control border-bottom"
+              id="password" name="password"
+              placeholder="Password" [(ngModel)]="adminform.password"
+              #password="ngModel"
+              [ngClass]="{'is-invalid':admform.submitted && password.errors}"/>
+
+              <div *ngIf="admform.submitted && password.errors" class="invalid-feedback">
+                <div *ngIf="password.errors['required']"> Password is required </div>
+                <div *ngIf="password.errors['maxlength']"> Password must be max of 10 characters</div>
+                <div *ngIf="password.errors['minlength']"> Password must be min of 6 characters</div>
+            </div>
+          </div>
+      </div>
+      </div>
+
+
+    <!--  <div class="form-group">
+      <div class="row mt-2 text-center">
+        <div class="col-lg-4"></div>
+          <div class="col-lg-4">
+              <input type="text"
+              class="form-control-plaintext form-control border-bottom"
+              id="role" name="role"
+              placeholder="Role" [(ngModel)]="adminform.role"
+              #role="ngModel"
+              [ngClass]="{'is-invalid':admform.submitted && role.errors}"/>
+
+              <div *ngIf="admform.submitted && role.errors" class="invalid-feedback">
+                <div *ngIf="role.errors['required']"> Role is required </div>
+            </div>
+          </div>
+      </div>
+    </div>-->
+
+    <div class="form-group">
+      <div class="row mt-4">
+          <div class="col-lg-4">
+          </div>
+          <div class="col-lg-4">
+              <button type="submit" class="btn btn-danger" (click)="onsubmit()"> Login </button>
+          </div>
+      </div>
+    </div>
+
+  </form>
+</div>
+</div>

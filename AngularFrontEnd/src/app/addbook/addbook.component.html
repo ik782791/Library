@@ -1,0 +1,116 @@
+<div class="register-form">
+  <div style="margin-top:30px;"></div>
+  <div class="container">
+    <a href="adminhome">List All Books</a>
+  <div style="text-align:center;">
+      <h2> Add New Book </h2>
+  </div>
+</div>
+
+  <div class="container mt-3 p-1">
+    <form name="addbookform" #adbkform="ngForm" (ngSubmit)="adbkform.form.valid">
+
+      <div class="form-group">
+        <div class="row mt-2 text-center">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <input type="text" class="form-control-plaintext form-control border-bottom"
+                id="bknm" name="bknm"
+                placeholder="Book Name" [(ngModel)]="addbookform.bknm"
+                #bknm="ngModel"
+                [ngClass]="{'is-invalid':adbkform.submitted && bknm.errors}"/>
+
+                <div *ngIf="adbkform.submitted && bknm.errors" class="invalid-feedback">
+                  <div *ngIf="bknm.errors['required']"> Book Name is required </div>
+              </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+        <div class="row mt-2">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="author" name="author"
+                placeholder="Author" [(ngModel)]="addbookform.author"
+                #author="ngModel"
+                [ngClass]="{'is-invalid':adbkform.submitted && author.errors}"/>
+
+                <div *ngIf="adbkform.submitted && author.errors" class="invalid-feedback">
+                  <div *ngIf="author.errors['required']"> Author Name is required </div>
+              </div>
+            </div>
+        </div>
+        </div>
+
+
+        <div class="form-group">
+        <div class="row mt-2 text-center">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <input type="number"
+                class="form-control-plaintext form-control border-bottom"
+                id="price" name="price"
+                placeholder="Price" [(ngModel)]="addbookform.price"
+                #price="ngModel"
+                [ngClass]="{'is-invalid':adbkform.submitted && price.errors}"/>
+
+                <div *ngIf="adbkform.submitted && price.errors" class="invalid-feedback">
+                  <div *ngIf="price.errors['required']"> Price is required </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+        <div class="row mt-2">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <textarea rows="5"
+                class="form-control-plaintext form-control border-bottom"
+                id="description" name="description"
+                placeholder="Book Description" [(ngModel)]="addbookform.description"
+                #description="ngModel"
+                [ngClass]="{'is-invalid':adbkform.submitted && description.errors}"></textarea>
+
+                <div *ngIf="adbkform.submitted && description.errors" class="invalid-feedback">
+                  <div *ngIf="description.errors['required']"> Description is required </div>
+              </div>
+            </div>
+        </div>
+        </div>
+
+
+      <div class="form-group">
+        <div class="row mt-2 text-center">
+          <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="status" name="status"
+                [(ngModel)]="addbookform.status" readonly
+                #status="ngModel"
+                [ngClass]="{'is-invalid':adbkform.submitted && status.errors}"/>
+
+                <div *ngIf="adbkform.submitted && status.errors" class="invalid-feedback">
+                  <div *ngIf="status.errors['required']"> Status is required </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="row mt-4">
+            <div class="col-lg-3">
+            </div>
+            <div class="col-lg-7">
+                <button type="submit" class="btn btn-danger" (click)="onsubmit()"> Add Details </button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>

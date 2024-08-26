@@ -1,0 +1,119 @@
+<div class= "container mt-5 p-1">
+  <h2 class="text-center"> Return Book </h2>
+  <br>
+  <div class="register-form">
+    <div class="container ">
+      <form name="retbook" #isubkform="ngForm" (ngSubmit)="isubkform.form.valid">
+      <div class="row">
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-lg-4">
+                  <label class="form-control border-0"> <strong>Issued Books : </strong></label></div>
+            <div class="col-lg-5">
+              <select (change)="onchangebook()" class="form-select-sm" id="bkids" name="bkids"  [(ngModel)]="dt">
+                     <option *ngFor="let b of bkid" value={{b}}> {{b}}</option>
+              </select></div>
+
+          </div>
+
+          <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Student Name : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="studentname" name="studentname"
+                 [(ngModel)]="retbook.studentname"
+                #studentname="ngModel" placeholder="Student Name"
+                [ngClass]="{'is-invalid':isubkform.submitted && studentname.errors}"/>
+
+                <div *ngIf="isubkform.submitted && studentname.errors" class="invalid-feedback">
+                  <div *ngIf="studentname.errors['required']"> Student Name is required </div>
+              </div>
+              </div>
+            </div>
+
+            <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Fine : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="fine" name="fine"
+                 [(ngModel)]="retbook.fine"
+                #fine="ngModel" placeholder="Fine"
+                />
+
+
+              </div>
+            </div>
+
+            <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Issue Date : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="date"
+                class="form-control-plaintext form-control border-bottom"
+                id="issuedate" name="issuedate"
+                 [(ngModel)]="retbook.issuedate"
+                #issuedate="ngModel"
+                />
+
+
+              </div>
+            </div>
+
+            <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Return Date : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="date"
+                class="form-control-plaintext form-control border-bottom"
+                id="returndate" name="returndate"
+                 [(ngModel)]="retbook.returndate"
+                #returndate="ngModel"
+                [ngClass]="{'is-invalid':isubkform.submitted && returndate.errors}"/>
+
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row mt-4">
+                  <div class="col-lg-3">
+                  </div>
+                  <div class="col-lg-7">
+                      <button type="submit" class="btn btn-danger" (click)="onsubmit()"> Return Book </button>
+                  </div>
+              </div>
+            </div>
+
+
+      </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

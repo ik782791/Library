@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="row ms-3">
+    <div class="col-lg-12">
+<div class="table-responsive">
+<table class="table table-borderless">
+  <caption class="caption-top"><a href="uploadimage">Add New Book</a></caption>
+  <thead class="table-light">
+    <tr>
+      <th scope="col">Book Id</th>
+      <th scope="col">Book Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">Image</th>
+      <th scope="col">Description</th>
+      <th colspan="2" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of bk">
+      <th scope="row">{{b.bkid}}</th>
+      <td>{{b.bknm}}</td>
+      <td>{{b.author}}</td>
+
+      <td> <app-updatebook [price]="b.price" (myOutput)="GetNewPrice($event)"></app-updatebook> </td>
+      <td>{{b.status}}</td>
+      <td><img src="data:image/png;base64,{{b.image}}" height="50" width="50"></td>
+      <td>{{b.description}}</td>
+      <td> <button type="button" class="btn btn-danger" (click)="updatebookprice(b)">Update</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deletebook(b.bkid)">Delete</button></td>
+    </tr>
+    <tr>
+
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<router-outlet></router-outlet>

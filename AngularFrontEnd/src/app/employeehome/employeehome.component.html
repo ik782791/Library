@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="row ms-3">
+      <div class="col-lg-3">
+            <ul class="list-unstyled pt-5">
+            <li class="pt-5"> <button type="button" class="btn btn-primary" (click)="issue()"> Issue Book </button></li>
+            <li class="pt-5"> <button type="button" class="btn btn-primary" (click)="return()"> Return Book </button></li>
+            </ul>
+      </div>
+      <div class="col-lg-9">
+        <ng-container *ngIf="toggle">
+                      <app-issuebook></app-issuebook>
+        </ng-container>
+        <ng-container *ngIf="!toggle">
+                      <app-returnbook></app-returnbook>
+        </ng-container>
+
+      </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

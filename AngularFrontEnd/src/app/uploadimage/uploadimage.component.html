@@ -1,0 +1,49 @@
+
+
+
+<app-addbook (bookid)="GetBookId($event)"></app-addbook>
+
+<div class="register-form">
+  <div style="margin-top:30px;"></div>
+
+  <div class="container mt-5 p-1">
+    <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-7">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+          <input type="file"
+          formControlName="image"
+          (change)="onImageUpload($event)"
+          class="form-control" accept="image/png"
+          />
+          <span> <strong>Upload only .png files</strong></span>
+
+      </div>
+
+      <div class="mt-4"></div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-control">
+            <button type="submit" class="btn btn-danger"> Upload Image </button>
+          </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="form-control">
+           <button type="submit" class="btn btn-danger" (click)="viewimage()"> View Image </button>
+           <div *ngIf=dbImage>
+               <img [src]="dbImage" height="100" width="200">
+           </div>
+       </div>
+     </div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+
+
+

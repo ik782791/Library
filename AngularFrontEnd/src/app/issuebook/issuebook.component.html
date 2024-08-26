@@ -1,0 +1,150 @@
+
+<div class= "container mt-5 p-1">
+  <h2 class="text-center"> Issue Book </h2>
+  <br>
+  <div class="register-form">
+    <div class="container ">
+      <form name="issuebook" #isubkform="ngForm" (ngSubmit)="isubkform.form.valid">
+      <div class="row">
+      <div class="col-lg-9">
+        <div class="row">
+          <div class="col-lg-4">
+                  <label class="form-control border-0"> <strong>Avaliable Books : </strong></label></div>
+            <div class="col-lg-5">
+              <select class="form-select-sm" id="bkids" name="bkids"  [(ngModel)]="issuebook.bkids">
+                     <option *ngFor="let b of bkid" value={{b}}> {{b}}</option>
+            </select></div>
+          </div>
+
+          <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Student Name : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="studentname" name="studentname"
+                 [(ngModel)]="issuebook.studentname"
+                #studentname="ngModel" placeholder="Student Name"
+                [ngClass]="{'is-invalid':isubkform.submitted && studentname.errors}"/>
+
+                <div *ngIf="isubkform.submitted && studentname.errors" class="invalid-feedback">
+                  <div *ngIf="studentname.errors['required']"> Student Name is required </div>
+              </div>
+              </div>
+            </div>
+
+            <!-------------------------------------------->
+       <!--   <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Fine : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="text"
+                class="form-control-plaintext form-control border-bottom"
+                id="fine" name="fine"
+                 [(ngModel)]="issuebook.fine"
+                #fine="ngModel" placeholder="Fine"
+                [ngClass]="{'is-invalid':isubkform.submitted && fine.errors}"/>
+
+                <div *ngIf="isubkform.submitted && fine.errors" class="invalid-feedback">
+                  <div *ngIf="fine.errors['minimum']"> Fine Must be zero </div>
+                  <div *ngIf="fine.errors['maximum']"> Fine Must be zero </div>
+                  <div *ngIf="fine.errors['required']"> Required Value </div>
+              </div>
+              </div>
+            </div>-->
+
+            <!-------------------------------------------->
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Issue Date : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="date"
+                class="form-control-plaintext form-control border-bottom"
+                id="issuedate" name="issuedate"
+                 [(ngModel)]="issuebook.issuedate"
+                #issuedate="ngModel"
+                [ngClass]="{'is-invalid':isubkform.submitted && issuedate.errors}"/>
+
+                <div *ngIf="isubkform.submitted && issuedate.errors" class="invalid-feedback">
+                  <div *ngIf="issuedate.errors['required']"> Required Date </div>
+              </div>
+              </div>
+            </div>
+
+            <!-------------------------------------------->
+
+
+          <div class="row mt-3">
+            <div class="col-lg-4">
+                    <label class="form-control border-0"> <strong>Return Date : </strong></label></div>
+              <div class="col-lg-5">
+                  <input type="date"
+                class="form-control-plaintext form-control border-bottom"
+                id="returndate" name="returndate"
+                 [(ngModel)]="issuebook.returndate"
+                #returndate="ngModel"
+                [ngClass]="{'is-invalid':isubkform.submitted && returndate.errors}"/>
+
+                <div *ngIf="isubkform.submitted && returndate.errors" class="invalid-feedback">
+                  <div *ngIf="returndate.errors['required']"> Required Date </div>
+              </div>
+              </div>
+            </div>
+
+            <script>
+              function convertToISO(timebit) {
+                timebit.setHours(0, -timebit.getTimezoneOffset(), 0, 0);
+                // remove GMT offset
+                var isodate = timebit.toISOString().slice(0,10);
+                // format convert and take first 10 characters of result
+                return isodate;
+                }
+              var bookdate = document.getElementById('returndate'),
+              currentdate = new Date();
+              bookdate.min = convertToISO(currentdate);
+              bookdate.placeholder = bookdate.min;
+              var futuredate = new Date();
+              futuredate.setDate(futuredate.getDate() + 7);
+              // go forward 7 days into the future
+              bookdate.max = convertToISO(futuredate);
+
+                          </script>
+
+
+
+            <div class="form-group">
+              <div class="row mt-4">
+                  <div class="col-lg-3">
+                  </div>
+                  <div class="col-lg-7">
+                      <button type="submit" class="btn btn-danger" (click)="onsubmit()"> Issue Book </button>
+                  </div>
+              </div>
+            </div>
+
+
+      </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
